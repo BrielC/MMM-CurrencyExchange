@@ -21,9 +21,8 @@ Module.register('MMM-CurrencyExchange',{
 		showFlag: true,
 		showText: true,
 		layoutStyle: 'table',
-
+	  	inverseRate: true,
 		initialLoadDelay: 0, // 0 seconds delay
-
 		apiBase: "https://api.exchangeratesapi.io/latest",
 	},
 	
@@ -96,7 +95,8 @@ Module.register('MMM-CurrencyExchange',{
 
 		if (this.config.layoutStyle == 'table') {
 			var table = document.createElement('table');
-			table.className = "small align-left";
+		//	table.className = "small align-left";
+	table.className = "medium align-left";
 		}
 
 		for (i in this.rates) {
@@ -108,7 +108,8 @@ Module.register('MMM-CurrencyExchange',{
 				var cell = document.createElement('td');
 			}
 			var rateContainer = document.createElement('span');
-			rateContainer.className = "light small";
+			//  rateContainer.className = "light small";
+	rateContainer.className = "light medium";
 
 			// determine if user wants to see the currency flag
 			if (this.config.showFlag) {
@@ -126,8 +127,17 @@ Module.register('MMM-CurrencyExchange',{
 			}
 
 			var rateSpan = document.createElement('span');
-			rateSpan.innerHTML = ((this.config.layoutStyle == 'ticker' && i < (this.rates.length - 1)) ? this.rates[i].rate + ' &bull; ' : this.rates[i].rate);
-			rateContainer.appendChild(rateSpan);
+
+			//  rateSpan.innerHTML = ((this.config.layoutStyle == 'ticker' && i < (this.rates.length - 1)) ? this.rates[i].rate + ' &bull; ' : this.rates[i].rate);
+			//  rateContainer.appendChild(rateSpan);
+
+		if (this.config.inverseRate) {
+  		inversedrate = 1 / this.rates[i].rate; // Inverse the rate
+  		rateSpan.innerHTML = ((this.config.layoutStyle == 'ticker' && i < (this.rates.length - 1)) ? inversedrate.toFixed(3) + ' &bull; ' : inversedrate.toFixed(3));
+  			} else {
+  		rateSpan.innerHTML = ((this.config.layoutStyle == 'ticker' && i < (this.rates.length - 1)) ? 1 / this.rates[i].rate + ' &bull; ' : 1 / this.rates[i].rate);
+  		}
+  		rateContainer.appendChild(rateSpan);
 
 			// if the user wants a table, we add the dataset to a cell. If this is the last dataset for a row or the final dataset we add the row to the table 
 			if (this.config.layoutStyle == 'table') {
