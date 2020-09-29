@@ -11,14 +11,16 @@ Activate the module by adding it to the config.js file as shown below.
 ## Using the module
 ````javascript
 modules: [
-{
-  module: 'MMM-CurrencyExchange',
-  position: 'top_right',
-  config: {
-    base: 'EUR',
-    symbols: ['GBP', 'USD']
-  }
-},
+
+		{
+			module: 'MMM-CurrencyExchange',
+		  	header: "Foreign Exchange",
+			position: 'top_left',
+			config: {
+				base: 'ZAR',
+				symbols: ['EUR', 'AUD', 'GBP', 'USD']
+			}
+		},
 ````
 
 ## Configuration options
