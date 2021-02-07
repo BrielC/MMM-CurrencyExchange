@@ -4,8 +4,12 @@ This an extension for the [MagicMirror](https://github.com/MichMich/MagicMirror)
 It derives foreign exchange rates from exchangeratesapi.io
 
 ## Installation
-Open a terminal session, navigate to your MagicMirror's `modules` folder and execute `git clone https://github.com/yawnsde/MMM-CurrencyExchange.git`, a new folder called MMM-CurrencyExchange will be created.
-
+Open a terminal session, navigate to your MagicMirror's `modules` folder and execute 
+```
+cd ~/MagicMirror/modules
+git clone https://github.com/BrielC/MMM-CurrencyExchange.git
+```
+A new folder called MMM-CurrencyExchange will be created.
 Activate the module by adding it to the config.js file as shown below.
 
 ## Using the module
